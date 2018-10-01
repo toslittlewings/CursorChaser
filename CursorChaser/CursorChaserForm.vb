@@ -11,11 +11,12 @@
         MyBase.OnLoad(e)
 
         '
-        _marker.Show()
-        _marker.Visible = False
         _cursorSize.Value = My.Settings.CursorSize
         _interval.Value = My.Settings.Interval
         _timer.Interval = _interval.Value
+        _marker.Visible = False
+        _marker.Show()
+        _marker.Size = New Size(_cursorSize.Value, _cursorSize.Value)
         _APHistory.Items.Clear()
         _targets.Items.Clear()
         Using sr = New IO.StringReader(My.Settings.Targets)
@@ -57,12 +58,9 @@
                             Exit For
                         End If
                     Next
-                    If targetHasForcus Or haveFocus Then
-                        _marker.Visible = True
-                        _marker.Location = New Point(Cursor.Position.X - _marker.Size.Width / 2, Cursor.Position.Y - _marker.Size.Height / 2)
-                    Else
-                        _marker.Visible = False
-                    End If
+                    _marker.Location = New Point(Cursor.Position.X - _marker.Size.Width / 2, Cursor.Position.Y - _marker.Size.Height / 2)
+                    _marker.Visible = targetHasForcus Or haveFocus
+
                     If Not p.ProcessName.Equals(__prevApp) Then Debug.WriteLine(p.ProcessName)
                     __prevApp = p.ProcessName
                 Catch ex As ArgumentException
