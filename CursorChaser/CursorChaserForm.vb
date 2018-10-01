@@ -39,7 +39,7 @@
 
                 Dim p = Process.GetProcessById(id)
                 Dim haveFocus = p.ProcessName.Equals("CursorChaser")
-                ' アクティブなアプリが履歴に無いか先頭でないときは履歴の先頭に入れる（ちらつくのを防ぐため）
+                ' アクティブなアプリが履歴に無いか先頭でないときは履歴の先頭に入れる（リストがちらつくのを防ぐため）
                 If 0 < _APHistory.Items.IndexOf(p.ProcessName) Then _APHistory.Items.Remove(p.ProcessName)
                 If Not haveFocus And Not _APHistory.Items.Contains(p.ProcessName) Then _APHistory.Items.Insert(0, p.ProcessName)
 
