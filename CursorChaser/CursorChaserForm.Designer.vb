@@ -46,7 +46,7 @@ Partial Class CursorChaserForm
         Me.Label4.Location = New System.Drawing.Point(167, 34)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(32, 12)
-        Me.Label4.TabIndex = 11
+        Me.Label4.TabIndex = 5
         Me.Label4.Text = "msec"
         '
         'Label3
@@ -55,7 +55,7 @@ Partial Class CursorChaserForm
         Me.Label3.Location = New System.Drawing.Point(167, 9)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(29, 12)
-        Me.Label3.TabIndex = 10
+        Me.Label3.TabIndex = 2
         Me.Label3.Text = "pixel"
         '
         '_interval
@@ -64,7 +64,7 @@ Partial Class CursorChaserForm
         Me._interval.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me._interval.Name = "_interval"
         Me._interval.Size = New System.Drawing.Size(71, 19)
-        Me._interval.TabIndex = 9
+        Me._interval.TabIndex = 4
         Me.ToolTip1.SetToolTip(Me._interval, "カーソル位置を監視する処理の頻度を時間で指定します" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "数値が小さいと追随の遅延が小さくなりますがPCの負荷が大きくなります")
         Me._interval.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
@@ -74,7 +74,7 @@ Partial Class CursorChaserForm
         Me.Label2.Location = New System.Drawing.Point(12, 34)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(61, 12)
-        Me.Label2.TabIndex = 8
+        Me.Label2.TabIndex = 3
         Me.Label2.Text = "インターバル"
         '
         '_cursorSize
@@ -84,7 +84,7 @@ Partial Class CursorChaserForm
         Me._cursorSize.Minimum = New Decimal(New Integer() {32, 0, 0, 0})
         Me._cursorSize.Name = "_cursorSize"
         Me._cursorSize.Size = New System.Drawing.Size(71, 19)
-        Me._cursorSize.TabIndex = 7
+        Me._cursorSize.TabIndex = 1
         Me.ToolTip1.SetToolTip(Me._cursorSize, "マーカーのサイズを指定します")
         Me._cursorSize.Value = New Decimal(New Integer() {128, 0, 0, 0})
         '
@@ -94,7 +94,7 @@ Partial Class CursorChaserForm
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(72, 12)
-        Me.Label1.TabIndex = 6
+        Me.Label1.TabIndex = 0
         Me.Label1.Text = "マーカーサイズ"
         '
         '_APHistory
@@ -105,7 +105,7 @@ Partial Class CursorChaserForm
         Me._APHistory.Location = New System.Drawing.Point(14, 82)
         Me._APHistory.Name = "_APHistory"
         Me._APHistory.Size = New System.Drawing.Size(120, 64)
-        Me._APHistory.TabIndex = 12
+        Me._APHistory.TabIndex = 7
         Me.ToolTip1.SetToolTip(Me._APHistory, "ウィンドウがアクティブになったアプリケーションの履歴です")
         '
         'Label5
@@ -114,7 +114,7 @@ Partial Class CursorChaserForm
         Me.Label5.Location = New System.Drawing.Point(12, 67)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(96, 12)
-        Me.Label5.TabIndex = 13
+        Me.Label5.TabIndex = 6
         Me.Label5.Text = "アクティブアプリ履歴"
         '
         'Label6
@@ -123,7 +123,7 @@ Partial Class CursorChaserForm
         Me.Label6.Location = New System.Drawing.Point(167, 67)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(91, 12)
-        Me.Label6.TabIndex = 15
+        Me.Label6.TabIndex = 10
         Me.Label6.Text = "カーソル追随対象"
         '
         '_targets
@@ -134,7 +134,7 @@ Partial Class CursorChaserForm
         Me._targets.Location = New System.Drawing.Point(169, 82)
         Me._targets.Name = "_targets"
         Me._targets.Size = New System.Drawing.Size(120, 64)
-        Me._targets.TabIndex = 14
+        Me._targets.TabIndex = 11
         Me.ToolTip1.SetToolTip(Me._targets, "カーソル追随対象のアプリ一覧です")
         '
         '_addTarget
@@ -142,7 +142,7 @@ Partial Class CursorChaserForm
         Me._addTarget.Location = New System.Drawing.Point(140, 82)
         Me._addTarget.Name = "_addTarget"
         Me._addTarget.Size = New System.Drawing.Size(23, 23)
-        Me._addTarget.TabIndex = 16
+        Me._addTarget.TabIndex = 8
         Me._addTarget.Text = ">"
         Me.ToolTip1.SetToolTip(Me._addTarget, "履歴で選択しているアプリを対象に加えます")
         Me._addTarget.UseVisualStyleBackColor = True
@@ -152,7 +152,7 @@ Partial Class CursorChaserForm
         Me._removeTarget.Location = New System.Drawing.Point(140, 111)
         Me._removeTarget.Name = "_removeTarget"
         Me._removeTarget.Size = New System.Drawing.Size(23, 23)
-        Me._removeTarget.TabIndex = 17
+        Me._removeTarget.TabIndex = 9
         Me._removeTarget.Text = "<"
         Me.ToolTip1.SetToolTip(Me._removeTarget, "対象から選択しているアプリを外します")
         Me._removeTarget.UseVisualStyleBackColor = True
