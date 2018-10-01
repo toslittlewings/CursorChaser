@@ -27,8 +27,14 @@
         End Using
 
         '
+        Static __prevApp As String = String.Empty
         AddHandler _timer.Tick,
             Sub(sender, ea)
+                Try
+
+                Catch ex As Exception
+
+                End Try
                 Dim h = GetForegroundWindow()
                 Dim id = -1
                 Dim result = GetWindowThreadProcessId(h, id)
@@ -37,26 +43,32 @@
                     Return
                 End If
 
-                Dim p = Process.GetProcessById(id)
-                Dim haveFocus = p.ProcessName.Equals("CursorChaser")
-                ' アクティブなアプリが履歴に無いか先頭でないときは履歴の先頭に入れる（リストがちらつくのを防ぐため）
-                If 0 < _APHistory.Items.IndexOf(p.ProcessName) Then _APHistory.Items.Remove(p.ProcessName)
-                If Not haveFocus And Not _APHistory.Items.Contains(p.ProcessName) Then _APHistory.Items.Insert(0, p.ProcessName)
+                Try
+                    Dim p = Process.GetProcessById(id)
+                    Dim haveFocus = p.ProcessName.Equals("CursorChaser")
+                    ' アクティブなアプリが履歴に無いか先頭でないときは履歴の先頭に入れる（リストがちらつくのを防ぐため）
+                    If 0 < _APHistory.Items.IndexOf(p.ProcessName) Then _APHistory.Items.Remove(p.ProcessName)
+                    If Not haveFocus And Not _APHistory.Items.Contains(p.ProcessName) Then _APHistory.Items.Insert(0, p.ProcessName)
 
-                Dim targetHasForcus = False
-                For Each target In _targets.Items
-                    If p.ProcessName.Equals(target) Then
-                        targetHasForcus = True
-                        Exit For
+                    Dim targetHasForcus = False
+                    For Each target In _targets.Items
+                        If p.ProcessName.Equals(target) Then
+                            targetHasForcus = True
+                            Exit For
+                        End If
+                    Next
+                    If targetHasForcus Or haveFocus Then
+                        _marker.Visible = True
+                        _marker.Location = New Point(Cursor.Position.X - _marker.Size.Width / 2, Cursor.Position.Y - _marker.Size.Height / 2)
+                    Else
+                        _marker.Visible = False
                     End If
-                Next
-                If targetHasForcus Or haveFocus Then
-                    _marker.Visible = True
-                    _marker.Location = New Point(Cursor.Position.X - _marker.Size.Width / 2, Cursor.Position.Y - _marker.Size.Height / 2)
-                Else
-                    _marker.Visible = False
-                End If
-                Debug.WriteLine(p.ProcessName)
+                    If Not p.ProcessName.Equals(__prevApp) Then Debug.WriteLine(p.ProcessName)
+                    __prevApp = p.ProcessName
+                Catch ex As ArgumentException
+                    ' アクティブなプロセスが閉じるとProcess.GetProcessByIdで例外が発生する
+                    Debug.WriteLine(ex.ToString())
+                End Try
             End Sub
         _timer.Start()
     End Sub
